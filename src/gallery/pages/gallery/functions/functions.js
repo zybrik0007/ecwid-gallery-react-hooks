@@ -36,6 +36,12 @@ export function sizeColumn(arr, int, className) {
             height1 = '8vh';
             height2 = '18vh';
             break
+        default:
+            width1 = '150px';
+            width2 = '90px';
+            height1 = '8vh';
+            height2 = '18vh';
+            break
     }
     for (let j=0; j<arr.length; j++) {
         if (arrColumns[j]) {

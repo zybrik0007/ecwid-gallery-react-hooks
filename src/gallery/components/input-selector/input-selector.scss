@@ -97,28 +97,47 @@
 }
 .input-selector__select_style {
     height: 100%;
+    width: 60px;
     border-top: 2px solid #dfdfdf;
     border-right: 2px solid #dfdfdf;
     border-bottom: 2px solid #dfdfdf;
+    background: #dfdfdf;;
+
+    select {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        opacity: 1;
+        background: inherit;
+    }
+
+    select::-ms-expand {
+        display: none;
+    }
 }
+
 .input-selector__select-value_style {
     border: none;
     outline: none;
     height: 100%;
+    width: 100%;
     font-family: 'Roboto', sans-serif;
     font-weight: lighter;
+
+    option {
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+        border: none;
+        outline: none;
+    }
 }
 
 .input-selector__select-value_style:hover {
     color: #000000;
     animation-name: animateButton;
     animation-duration: 5s;
-
-    option {
-        font-family: 'Roboto', sans-serif;
-        font-weight: lighter;
-    }
 }
+
+
 
 @keyframes animateButton {
     0%   {color: #000000}

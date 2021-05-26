@@ -3,7 +3,7 @@ import './photo.scss'
 import PhotoButtons from '../photo-buttons/photo-buttons';
 import {server} from '../../../server/server'
 import {useDispatch} from 'react-redux';
-import {deletePhoto, getGallery} from '../../../redux/actions/actions';
+import {deletePhoto} from '../../../redux/actions/actions';
 import {Link} from 'react-router-dom';
 
 

@@ -20,9 +20,10 @@ function App() {
               </div>
             </div>
               <Switch>
-                  <Route path='/gallery'><Gallery/></Route>
-                  <Route path='/photo/:id'><PhotoInfo/></Route>
-                  <Route path='/'><Redirect to='/gallery'/></Route>
+                  <Redirect exact from='/' to='/gallery'/>
+                  <Route exact path='/gallery'><Gallery/></Route>
+                  <Route exact path='/photo/:id'><PhotoInfo/></Route>
+                  <Redirect from='*' to='/gallery'/>
               </Switch>
           </Router>
     )

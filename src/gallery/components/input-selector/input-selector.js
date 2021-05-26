@@ -21,7 +21,6 @@ function InputSelector({objSelectorInput}) {
     const [obj] = useState(objSelectorInput)
 
     useEffect(() => {
-        const selectComponent = document.querySelector('.input-selector__select-value');
         inputDisplay(document.getElementsByClassName('input-selector__select-input'),
             document.getElementsByClassName('input-selector__select-button'),
             document.querySelector('.input-selector__select-value').value)

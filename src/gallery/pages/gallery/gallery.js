@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import './gallery.scss'
 import Photo from '../../components/photo/photo';
 import {useDispatch, useSelector} from 'react-redux';
@@ -12,7 +12,6 @@ import Input from '../../components/input/input';
 function Gallery() {
     const dispatch = useDispatch()
     const photos = useSelector(state => state.photos.photos)
-    const countPhotos = useSelector(state => state.photos.countPhotos)
     const loader = useSelector(state => state.system.loading)
     const error = useSelector(state => state.system.error)
     const errorText = useSelector(state => state.system.errorText)
