@@ -17,7 +17,7 @@ export const photosReducer = (state = initialState, action) => {
         case GET_PHOTO_ID:
             return {...state, photos: action.payload}
         case DELETE_PHOTO_ID:
-            return {...state, photos: state.photos.filter(photo => photo['id'] !== action.payload)}
+            return {...state, photos: state.photos.filter(photo => photo['id'] !== action.payload), countPhotos: state.countPhotos - 1}
         case GET_PHOTO_ID_PAGE:
             return {...state, photo: action.payload}
         default: return state

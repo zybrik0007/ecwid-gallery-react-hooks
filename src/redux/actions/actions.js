@@ -121,11 +121,13 @@ export function putJsonPhoto(event) {
                     }
                 }
                 dispatchPutGallery(getGallery(50))
+                dispatchPutGallery(getCountPhotosGallery())
                 setTimeout(() => {
                     dispatchPutGallery({type: ERROR_HIDE})
                 }, 10000)
             } else {
                 dispatchPutGallery(getGallery(50))
+                dispatchPutGallery(getCountPhotosGallery())
             }
         }
         setTimeout(()=> {
@@ -172,8 +174,12 @@ export function deletePhoto(event) {
             if(!(response.response)) {
                 dispatchDeletePhoto({type: ERROR_SHOW, payload: 'Ошибка связи с сервером'})
             } else {
-                dispatchDeletePhoto({type: ERROR_SHOW, payload: 'Неизвестная ошибка сервера'})
-            }
+                    if(!(response.response.data.error)) {
+                        dispatchDeletePhoto({type: ERROR_SHOW, payload: 'Неизвестная ошибка сервера'})
+                    } else {
+                        dispatchDeletePhoto({type: ERROR_SHOW, payload: response.response.data.error})
+                    }
+                }
             dispatchDeletePhoto(hideLoader())
             setTimeout(() => {dispatchDeletePhoto({type: ERROR_HIDE})}, 10000)
             setTimeout(() => {document.documentElement.scrollTop = 0}, 1000)
@@ -181,7 +187,8 @@ export function deletePhoto(event) {
         } else {
             setTimeout(() => {
                 dispatchDeletePhoto(hideLoader())
-                dispatchDeletePhoto({type: DELETE_PHOTO_ID, payload: event})}, 1000)
+                dispatchDeletePhoto({type: DELETE_PHOTO_ID, payload: event})
+            }, 1000)
         }
     }
 }
@@ -263,6 +270,7 @@ export function putUrlPhoto(event) {
                 }, 2000)
             } else {
                 dispatchPutUrlPhoto(getGallery(50))
+                dispatchPutUrlPhoto(getCountPhotosGallery())
                 setTimeout(()=> {
                     dispatchPutUrlPhoto(hideLoader())
                 }, 2000)

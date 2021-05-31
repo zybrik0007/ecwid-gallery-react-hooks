@@ -12,6 +12,7 @@ import Input from '../../components/input/input';
 function Gallery() {
     const dispatch = useDispatch()
     const photos = useSelector(state => state.photos.photos)
+    const count = useSelector(state => state.photos.countPhotos)
     const loader = useSelector(state => state.system.loading)
     const error = useSelector(state => state.system.error)
     const errorText = useSelector(state => state.system.errorText)
@@ -55,11 +56,13 @@ function Gallery() {
         })
     })
 
-    console.log('photos', photos)
 
     /*Скроллинг и подгрузка изображений*/
     window.onscroll = async function () {
-        if (photos && photos.length !== 1) {
+        console.log('lenght: ', photos.length)
+        console.log('count: ', count)
+        if (photos && photos.length < count) {
+
             const scrollLab = document.documentElement.scrollHeight - window.innerHeight
             if(Math.ceil(scrollLab) === Math.ceil(window.scrollY)) {
                 dispatch(getGalleryScroll(photos.length + 50))
